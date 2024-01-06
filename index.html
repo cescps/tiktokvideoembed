@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Embed Generator</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>TikTok Video Extractor</h1>
+    <input type="text" id="tiktokLink" placeholder="Paste TikTok link here">
+    <button onclick="generateEmbed()">Generate Embed</button>
+
+    <br>
+
+    <div id="embedCode"></div>
+
+    <script>
+        function generateEmbed() {
+            var tiktokLink = document.getElementById('tiktokLink').value;
+            var embedCode = getEmbedCode(tiktokLink);
+
+            document.getElementById('embedCode').innerHTML = embedCode;
+        }
+
+        function getEmbedCode(tiktokLink) {
+            // Extract video ID from the TikTok link
+            var videoID = tiktokLink.match(/\/video\/(\d+)/)[1];
+
+            // Construct the TikTok embed code
+            var embedCode = `<iframe src="https://www.tiktok.com/embed/v2/${videoID}?lang=en-US" width="600" height="800" frameborder="0" allowfullscreen></iframe>`;
+
+            return embedCode;
+        }
+    </script>
+</body>
+</html>
